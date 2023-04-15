@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Overview from "./Overview";
 import Positions from "./Positions";
 import CreatePosition from "./CreatePosition";
+import WalletSelector from "../../components/WalletSelector";
 
 const StyledDashboardPage = styled.div`
   width: 100%;
@@ -22,6 +23,7 @@ const DashboardPage = () => {
       <Overview />
       <Positions />
       <CreatePosition show={action === "create"} address={address} />
+      <WalletSelector />
     </StyledDashboardPage>
   );
 };
