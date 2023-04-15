@@ -59,6 +59,7 @@ const Hero = () => {
         <Button
           large
           primary
+          desktopOnly
           click={() => {
             if (LIVE) navigate("dashboard/create");
           }}

@@ -20,3 +20,5 @@ export const ETH_GLOBALS: GlobalsType = {
 export const POLYGON_GLOBALS: GlobalsType = {
   FACTORY: "0x88865532AB232aab74C69FEb0409A00133d053d8",
 };
+
+export const DEFAULT_BOT = "0x84C215bBc7B8753cdb07991a619D51A14E09A8C0";

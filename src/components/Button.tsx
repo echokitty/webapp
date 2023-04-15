@@ -7,6 +7,7 @@ import { selectError } from "../state/errorSlice";
 interface ButtonProps {
   primary?: boolean;
   large?: boolean;
+  desktopOnly?: boolean;
 }
 
 const StyledButton = styled.button`
@@ -34,6 +35,7 @@ const StyledButton = styled.button`
   @media (max-width: 768px) {
     padding: 1rem 2rem;
     font-size: 1.6rem;
+    display: ${(props: ButtonProps) => (props.desktopOnly ? "none" : "flex")};
   }
 `;
 
@@ -44,6 +46,7 @@ interface Props {
   loading?: boolean;
   children?: ReactNode;
   large?: boolean;
+  desktopOnly?: boolean;
 }
 
 const Button = ({
@@ -53,6 +56,7 @@ const Button = ({
   disabled,
   loading,
   large,
+  desktopOnly,
 }: Props) => {
   const { account, activateBrowserWallet } = useEthers();
   const error = useSelector(selectError);
@@ -75,6 +79,7 @@ const Button = ({
       disabled={disabled || loading || pending}
       primary={primary}
       large={large}
+      desktopOnly={desktopOnly}
     >
       {isWeb3 && !account
         ? "Connect Wallet"
