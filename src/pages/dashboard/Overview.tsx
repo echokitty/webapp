@@ -56,6 +56,8 @@ const Overview = () => {
 
   const data = overview.tokens.map((token) => token.balance);
 
+  if (overview.pnl === 0) return null;
+
   return (
     <StyledOverview>
       <Header>{t("dashboard.overview.title")}</Header>
