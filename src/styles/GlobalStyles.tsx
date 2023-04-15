@@ -7,6 +7,8 @@ const GlobalStyle = createGlobalStyle`
         --sub: grey;
         --primary: #32B2E5;
         --error: red;
+
+        --section-spacing: 8rem;
     }
 
     * {
