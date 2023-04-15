@@ -4,7 +4,7 @@ import { utils } from "ethers";
 
 import Button from "../../components/Button";
 import TokenInput from "../../components/TokenInput";
-import { useWrap } from "../../contracts/functions";
+// import { useWrap } from "../../contracts/functions";
 import useGlobals from "../../app/hooks/use-globals";
 
 const StyledWethSwap = styled.div`
@@ -20,28 +20,28 @@ const StyledWethSwap = styled.div`
 `;
 
 const WethSwap = () => {
-  const { wrapState, wrap } = useWrap();
+  // const { wrapState, wrap } = useWrap();
   const globals = useGlobals();
   const [value, setValue] = useState("");
 
-  useEffect(() => {
-    if (wrapState.status === "Success") setValue("");
-  }, [wrapState.status]);
+  // useEffect(() => {
+  //   if (wrapState.status === "Success") setValue("");
+  // }, [wrapState.status]);
 
   return (
     <StyledWethSwap>
-      <TokenInput
+      {/* <TokenInput
         eth
         token={globals.WETH}
         value={value}
         setValue={(v: string) => setValue(v)}
-      />
-      <Button
+      /> */}
+      {/* <Button
         click={() => wrap({ value: utils.parseEther(value) })}
         loading={wrapState.status === "Mining"}
       >
         Wrap ETH
-      </Button>
+      </Button> */}
     </StyledWethSwap>
   );
 };
