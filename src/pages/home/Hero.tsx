@@ -10,7 +10,7 @@ const StyledHero = styled.div`
   justify-content: center;
   padding: 5rem;
   width: 100%;
-  height: 80vh;
+  height: 70vh;
 `;
 
 const Content = styled.div`
