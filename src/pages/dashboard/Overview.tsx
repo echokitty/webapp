@@ -10,7 +10,8 @@ const StyledOverview = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 140rem;
+  max-width: 110rem;
+  margin-bottom: 8rem;
 `;
 
 const Content = styled.div`
@@ -29,6 +30,7 @@ const Chart = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
+  transform: translateY(-20%);
 `;
 
 const Item = styled.div`
@@ -56,7 +58,7 @@ const Overview = () => {
 
   const data = overview.tokens.map((token) => token.balance);
 
-  if (overview.pnl === 0) return null;
+  // if (overview.pnl === 0) return null;
 
   return (
     <StyledOverview>
@@ -75,7 +77,7 @@ const Overview = () => {
           </Item>
         </Stats>
         <Chart>
-          <PieChart labels={labels} data={data} />
+          <PieChart width="10rem" labels={labels} data={data} />
         </Chart>
       </Content>
     </StyledOverview>

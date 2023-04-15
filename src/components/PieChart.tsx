@@ -60,7 +60,7 @@ const PieChart = ({ labels, data, width }: Props) => {
 
   return (
     <StyledPieChart>
-      <Pie data={chartData} options={options} />
+      <Pie width={width} data={chartData} options={options} />
     </StyledPieChart>
   );
 };
