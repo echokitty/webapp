@@ -1,4 +1,8 @@
-import usePositions, { PositionType, TokenBalanceType } from "./use-positions";
+import {
+  PositionType,
+  TokenBalanceType,
+  usePositions,
+} from "../../contracts/views";
 
 export interface OverviewType {
   balance: number;
@@ -8,6 +12,8 @@ export interface OverviewType {
 
 const useOverview = (): OverviewType => {
   const positions = usePositions();
+
+  if (!positions) return { balance: 0, pnl: 0, tokens: [] };
 
   const balance = positions
     .map((position: PositionType) => position.balance)
