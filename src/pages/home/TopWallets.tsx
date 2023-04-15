@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { shortenAddress } from "@usedapp/core";
+
 import { Header } from "../../styles/Headers";
 import useTopWallets, { TopWalletType } from "../../app/hooks/use-top-wallets";
-import { shortenAddress } from "@usedapp/core";
 import Button from "../../components/Button";
-import { useNavigate } from "react-router-dom";
 
 const StyledTopWallets = styled.div`
   display: flex;
@@ -51,11 +52,10 @@ const Headers = styled(Row)`
 
 const Item = styled.div`
   flex: 2;
-  /* border: solid 1px pink; */
 `;
 
 const RowHeader = styled(Item)`
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 600;
 `;
 
