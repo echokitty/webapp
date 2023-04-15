@@ -7,6 +7,8 @@ import { Header } from "../../styles/Headers";
 import Button from "../../components/Button";
 import { usePositions } from "../../contracts/views";
 import usePrices from "../../app/hooks/use-prices";
+import { roundToDp } from "../../app/lib/formatting";
+import PieChart from "../../components/PieChart";
 
 const StyledPositions = styled.div`
   width: 100%;
@@ -46,15 +48,15 @@ const Section = styled.div`
 
 const SectionHeader = styled.div`
   color: var(--sub);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
 `;
 
 const SectionValue = styled.div`
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 `;
 
 const Positions = () => {
@@ -74,7 +76,6 @@ const Positions = () => {
   });
 
   const prices = usePrices(tokens);
-  console.log("prices", prices);
 
   if (!positions || !prices) {
     return null;
@@ -102,9 +103,22 @@ const Positions = () => {
               <SectionHeader>
                 {t("dashboard.overview.headers.total")}
               </SectionHeader>
-              <SectionValue>{position.tokens}</SectionValue>
+              <SectionValue>{`$${roundToDp(
+                position.balance
+              ).toLocaleString()}`}</SectionValue>
+              <SectionHeader>
+                {t("dashboard.overview.headers.pnl")}
+              </SectionHeader>
+              <SectionValue>{`${roundToDp(
+                position.pnl
+              ).toLocaleString()}%`}</SectionValue>
             </Section>
-            <Section>pie</Section>
+            <Section>
+              <PieChart
+                data={position.tokens.map((token) => token.balance)}
+                labels={position.tokens.map((token) => token.tokenAddress)}
+              />
+            </Section>
           </Position>
         );
       })}
