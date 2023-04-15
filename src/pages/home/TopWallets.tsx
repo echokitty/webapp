@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { shortenAddress } from "@usedapp/core";
 import { useTranslation } from "react-i18next";
 
 import { Header } from "../../styles/Headers";
 import useTopWallets, { TopWalletType } from "../../app/hooks/use-top-wallets";
-import Button from "../../components/Button";
+import Wallet from "./Wallet";
 
 const StyledTopWallets = styled.div`
   display: flex;
@@ -35,13 +34,6 @@ const Row = styled.div`
   }
 `;
 
-const Wallet = styled(Row)`
-  border: solid 1px pink;
-  padding: 0.7rem 2rem;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-`;
-
 const Headers = styled(Row)`
   display: flex;
   align-items: center;
@@ -60,15 +52,8 @@ const RowHeader = styled(Item)`
   font-weight: 600;
 `;
 
-const Data = styled(Item)`
-  font-size: 1.6rem;
-  font-weight: 500;
-  text-align: left;
-`;
-
 const TopWallets = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const topWallets = useTopWallets();
 
   const bestWallets = topWallets.slice(0, 6);
@@ -78,24 +63,13 @@ const TopWallets = () => {
       <Header>{t("topWallets.title")}</Header>
       <Wallets>
         <Headers>
-          <RowHeader>{t("topWallets.headers.ens")}</RowHeader>
           <RowHeader>{t("topWallets.headers.address")}</RowHeader>
           <RowHeader>{t("topWallets.headers.pnl")}</RowHeader>
+          <RowHeader>{t("topWallets.headers.lens")}</RowHeader>
           <RowHeader />
         </Headers>
         {bestWallets.map((wallet: TopWalletType, index: number) => (
-          <Wallet key={index}>
-            <Data>{wallet.ens}</Data>
-            <Data>{shortenAddress(wallet.address)}</Data>
-            <Data>{`${wallet.pnl}%`}</Data>
-            <Data>
-              <Button
-                click={() => navigate(`dashboard/create/${wallet.address}`)}
-              >
-                {t("createPosition")}
-              </Button>
-            </Data>
-          </Wallet>
+          <Wallet key={index} wallet={wallet} />
         ))}
       </Wallets>
     </StyledTopWallets>
