@@ -3,21 +3,22 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
+import KeyboardCat from "../../components/KeyboardCat";
 
 const StyledHero = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 5rem;
   width: 100%;
-  height: calc(100vh - 112px);
+  height: calc(70vh - 112px);
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 `;
 
 const Header = styled.h1`
@@ -55,10 +56,15 @@ const Hero = () => {
         <Header>{t("title")}</Header>
         <SubHeader>{t("description")}</SubHeader>
         {/* <Button large primary click={() => navigate("dashboard/create")}> */}
-        <Button large primary click={() => console.log("meow")}>
-          {/* {t("createPosition")} */}
-          {t("comingSoon")}
-        </Button>
+        <div>
+          <Button large primary click={() => console.log("meow")}>
+            {/* {t("createPosition")} */}
+            {t("comingSoon")}
+          </Button>
+        </div>
+      </Content>
+      <Content>
+        <KeyboardCat />
       </Content>
     </StyledHero>
   );

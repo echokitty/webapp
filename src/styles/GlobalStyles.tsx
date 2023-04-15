@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
         --error: red;
         --blue: #C0DBEA;
         --purple: #BA90C6;
+        --pink: #E8A0BF;
+        --green: #BA90C6;
+        --orange: #ffcc81;
+        --cyan: #C0DBEA;
 
         --section-spacing: 8rem;
         --section-spacing-mobile: 4rem 1.5rem;
