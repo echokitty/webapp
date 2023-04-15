@@ -18,14 +18,10 @@ const KeyboardCat = () => {
   const notes = document.querySelectorAll(".note");
 
   useEffect(() => {
-    // notes.forEach((note) => {
-    //   note?.parentElement?.appendChild(note.cloneNode(true));
-    //   note?.parentElement?.appendChild(note.cloneNode(true));
-    // });
-    for (let note of notes as any) {
+    notes.forEach((note) => {
       note?.parentElement?.appendChild(note.cloneNode(true));
       note?.parentElement?.appendChild(note.cloneNode(true));
-    }
+    });
 
     const music = { note: s(".music .note") };
     const cat = {
