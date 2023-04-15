@@ -32,6 +32,27 @@ export const useWallet = (): string | null => {
   return wallet;
 };
 
+export const usePredictedSubWalletAddress = (
+  salt: string,
+  target: string
+): string | null => {
+  const wallet = useWallet();
+
+  const abi = [
+    "function getPredictedSubwalletAddress(bytes32,address) view returns (address)",
+  ];
+  const [predictedAddress] = useContractCall(
+    wallet && {
+      abi: new utils.Interface(abi),
+      address: wallet || ZERO_ADDRESS,
+      method: "getPredictedSubwalletAddress",
+      args: [salt, target],
+    }
+  ) ?? [null];
+
+  return predictedAddress;
+};
+
 export const useSubwallets = (): string[] | null => {
   const wallet = useWallet();
 
