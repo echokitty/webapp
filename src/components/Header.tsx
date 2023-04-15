@@ -51,10 +51,10 @@ const Header = () => {
       label: t("navItems.home"),
       link: "/",
     },
-    {
-      label: t("navItems.dashboard"),
-      link: "/dashboard",
-    },
+    // {
+    //   label: t("navItems.dashboard"),
+    //   link: "/dashboard",
+    // },
   ];
 
   return (
