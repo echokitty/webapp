@@ -46,7 +46,9 @@ const Hero = () => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim.
         </SubHeader>
-        <Button click={() => navigate("dashboard")}>Create Position</Button>
+        <Button click={() => navigate("dashboard/create")}>
+          Create Position
+        </Button>
       </Content>
     </StyledHero>
   );
