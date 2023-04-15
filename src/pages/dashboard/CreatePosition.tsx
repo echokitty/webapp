@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { utils, BigNumber } from "ethers";
+import { BigNumber } from "ethers";
 
 import Popup from "../../components/Popup";
 import Input from "../../styles/Input";
 import Radio from "../../components/Radio";
 import useTokens, { Token } from "../../app/hooks/use-tokens";
-import { ZERO_ADDRESS } from "../../app/globals";
+import { API_NATIVE, ZERO_ADDRESS } from "../../app/globals";
 import usePrices from "../../app/hooks/use-prices";
 import { roundToDp } from "../../app/lib/formatting";
 import { Swap, useCreatePosition } from "../../contracts/functions";
@@ -66,6 +66,12 @@ interface Props {
   address: string | undefined;
 }
 
+const stringToScaledBigNumber = (value: string) => {
+  return BigNumber.from(Math.floor(Number(value) * 10_000)).mul(
+    BigNumber.from(10).pow(14)
+  );
+};
+
 const CreatePosition = ({ show, address }: Props) => {
   const { t } = useTranslation();
   const [selected, setSelected] = useState<number[]>([]);
@@ -75,7 +81,7 @@ const CreatePosition = ({ show, address }: Props) => {
   const prices = usePrices(tokens.map((token: Token) => token.address));
   const { createPositionState, createPosition } = useCreatePosition(
     address_ || ZERO_ADDRESS,
-    BigNumber.from(amount || "0").mul(BigNumber.from(10).pow(18))
+    stringToScaledBigNumber(amount || "0")
   );
 
   const navigate = useNavigate();
@@ -109,7 +115,7 @@ const CreatePosition = ({ show, address }: Props) => {
 
   const swaps: Swap[] = tokens
     .filter((token: Token, index: number) => {
-      return selected.includes(index);
+      return selected.includes(index) && token.address !== API_NATIVE;
     })
     .map((token: Token) => {
       const percentage = getPercentage(token, prices);

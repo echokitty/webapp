@@ -5,6 +5,7 @@ export const LIVE = true;
 export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const NATIVE_TOKEN_ADDRESS =
   "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+export const API_NATIVE = "0x0000000000000000000000000000000000001010";
 
 export const SALT = utils.keccak256(utils.randomBytes(32));
 
