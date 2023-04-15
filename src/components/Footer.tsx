@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import Socials from "./Socials";
+import logo from "../assets/logo.png";
 
 const StyledFooter = styled.div`
   width: 100%;
@@ -11,16 +12,22 @@ const StyledFooter = styled.div`
   padding: var(--header-footer-padding);
 `;
 
-const Logo = styled.div`
-  font-size: 2.3rem;
+const LogoButton = styled.button`
+  cursor: pointer;
+`;
+
+const Logo = styled.img`
+  height: 6rem;
 `;
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <StyledFooter>
-      <Logo>{t("title")}</Logo>
+      <LogoButton onClick={() => navigate("")}>
+        <Logo src={logo} alt="EchoKitty Logo" />
+      </LogoButton>
       <Socials />
     </StyledFooter>
   );
