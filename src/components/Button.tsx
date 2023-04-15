@@ -6,21 +6,25 @@ import { selectError } from "../state/errorSlice";
 
 interface ButtonProps {
   primary?: boolean;
+  large?: boolean;
 }
 
 const StyledButton = styled.button`
-  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+
   border: ${(props: ButtonProps) => (props.primary ? "0" : "1px")} solid
     var(--main);
   background-color: ${(props: ButtonProps) =>
-    props.primary ? "var(--primary)" : "var(--bg)"};
-  white-space: nowrap;
-
-  font-size: 1.6rem;
+    props.primary ? "var(--blue)" : "var(--bg)"};
+  padding: ${(props: ButtonProps) =>
+    props.large ? "1.5rem 3rem" : "1rem 2rem"};
+  font-size: ${(props: ButtonProps) => (props.large ? "2rem" : "1.6rem")};
+  font-weight: ${(props: ButtonProps) => (props.large ? "500" : "500")};
 
   :disabled {
     cursor: auto;
@@ -34,9 +38,17 @@ interface Props {
   disabled?: boolean;
   loading?: boolean;
   children?: ReactNode;
+  large?: boolean;
 }
 
-const Button = ({ children, click, primary, disabled, loading }: Props) => {
+const Button = ({
+  children,
+  click,
+  primary,
+  disabled,
+  loading,
+  large,
+}: Props) => {
   const { account, activateBrowserWallet } = useEthers();
   const error = useSelector(selectError);
   const [pending, setPending] = useState(false);
@@ -57,6 +69,7 @@ const Button = ({ children, click, primary, disabled, loading }: Props) => {
       }}
       disabled={disabled || loading || pending}
       primary={primary}
+      large={large}
     >
       {isWeb3 && !account
         ? "Connect Wallet"
