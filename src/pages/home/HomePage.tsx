@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Hero from "./Hero";
+import HowItWorks from "./HowItWorks";
 
 const StyledHomePage = styled.div`
   width: 100%;
@@ -13,6 +14,7 @@ const HomePage = () => {
   return (
     <StyledHomePage>
       <Hero />
+      <HowItWorks />
     </StyledHomePage>
   );
 };
