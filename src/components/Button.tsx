@@ -18,6 +18,7 @@ const StyledButton = styled.button`
     var(--main);
   background-color: ${(props: ButtonProps) =>
     props.primary ? "var(--primary)" : "var(--bg)"};
+  white-space: nowrap;
 
   font-size: 1.6rem;
 
