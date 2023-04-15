@@ -25,15 +25,20 @@ const Background = styled.button`
   backdrop-filter: blur(10px);
 `;
 
+interface ContainerProps {
+  width?: string;
+}
+
 const Container = styled.div`
   position: relative;
-  width: 40rem;
+  width: ${(props: ContainerProps) => props.width || "40rem"};
   background-color: var(--bg);
   border-radius: 2rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--purple);
 `;
 
 const ExitButton = styled.button`
@@ -49,13 +54,14 @@ const Exit = styled.img`
 
 const Header = styled.div`
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
 `;
 
 const SubHeader = styled.div`
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: var(--sub);
+  color: var(--main);
 `;
 
 const Content = styled.div`
@@ -72,6 +78,7 @@ interface Props {
   buttonText?: string;
   buttonAction?: () => void;
   children?: ReactNode;
+  width?: string;
 }
 
 const Popup = ({
@@ -82,13 +89,14 @@ const Popup = ({
   buttonText,
   buttonAction,
   children,
+  width,
 }: Props) => {
   if (!show) return null;
 
   return (
     <StyledPopup>
       <Background />
-      <Container>
+      <Container width={width}>
         <ExitButton onClick={() => close()}>
           <Exit src={exit} />
         </ExitButton>
