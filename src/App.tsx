@@ -11,6 +11,7 @@ const StyledApp = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  background: var(--bg);
 `;
 
 const config: Config = {
