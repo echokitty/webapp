@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { TopWalletType } from "../../app/hooks/use-top-wallets";
 import Button from "../../components/Button";
+import { LIVE } from "../../app/globals";
 // import useENS from "../../app/hooks/use-ens";
 
 const Row = styled.div`
@@ -74,10 +75,12 @@ const Wallet = ({ wallet }: Props) => {
       <Data>{`${wallet.pnl.toLocaleString()}%`}</Data>
       {/* <Data>{wallet.ens}</Data> */}
       <Data>
-        {/* <Button click={() => navigate(`dashboard/create/${wallet.address}`)}> */}
-        <Button click={() => console.log("meow")}>
-          {/* {t("createPosition")} */}
-          {t("comingSoon")}
+        <Button
+          click={() => {
+            if (LIVE) navigate(`dashboard/create/${wallet.address}`);
+          }}
+        >
+          {LIVE ? t("createPosition") : t("comingSoon")}
         </Button>
       </Data>
     </StyledWallet>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
 import KeyboardCat from "../../components/KeyboardCat";
+import { LIVE } from "../../app/globals";
 
 const StyledHero = styled.div`
   display: flex;
@@ -55,13 +56,15 @@ const Hero = () => {
       <Content>
         <Header>{t("title")}</Header>
         <SubHeader>{t("description")}</SubHeader>
-        {/* <Button large primary click={() => navigate("dashboard/create")}> */}
-        <div>
-          <Button large primary click={() => console.log("meow")}>
-            {/* {t("createPosition")} */}
-            {t("comingSoon")}
-          </Button>
-        </div>
+        <Button
+          large
+          primary
+          click={() => {
+            if (LIVE) navigate("dashboard/create");
+          }}
+        >
+          {LIVE ? t("createPosition") : t("comingSoon")}
+        </Button>
       </Content>
       <Content>
         <KeyboardCat />

@@ -1,3 +1,5 @@
+export const LIVE = false;
+
 interface GlobalsType {
   WETH: string;
 }
