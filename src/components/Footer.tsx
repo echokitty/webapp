@@ -7,7 +7,6 @@ const StyledFooter = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 2rem 3rem;
-  border: solid 1px green;
 `;
 
 const Logo = styled.div`
@@ -17,7 +16,7 @@ const Logo = styled.div`
 const Footer = () => {
   return (
     <StyledFooter>
-      <Logo>components/Footer.tsx</Logo>
+      <Logo>EchoKitty</Logo>
       <Socials />
     </StyledFooter>
   );
