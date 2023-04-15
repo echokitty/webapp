@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import { Header } from "../../styles/Headers";
 import useOverview from "../../app/hooks/use-overview";
@@ -48,6 +49,7 @@ const ItemValue = styled.div`
 `;
 
 const Overview = () => {
+  const { t } = useTranslation();
   const overview = useOverview();
 
   const labels = overview.tokens.map((token) => token.tokenAddress);
@@ -56,15 +58,15 @@ const Overview = () => {
 
   return (
     <StyledOverview>
-      <Header>Dashboard</Header>
+      <Header>{t("dashboard.overview.title")}</Header>
       <Content>
         <Stats>
           <Item>
-            <ItemHeader>Total Balance:</ItemHeader>
+            <ItemHeader>{t("dashboard.overview.headers.total")}</ItemHeader>
             <ItemValue>{`$${overview.balance.toLocaleString()}`}</ItemValue>
           </Item>
           <Item>
-            <ItemHeader>PNL:</ItemHeader>
+            <ItemHeader>{t("dashboard.overview.headers.pnl")}</ItemHeader>
             <ItemValue>{`${roundToDp(
               overview.pnl
             ).toLocaleString()}%`}</ItemValue>

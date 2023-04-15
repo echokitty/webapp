@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import usePositions from "../../app/hooks/use-positions";
 import { Header } from "../../styles/Headers";
@@ -33,15 +34,19 @@ const Position = styled.div`
 `;
 
 const Positions = () => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const positions = usePositions();
 
   return (
     <StyledPositions>
       <HeaderSection>
-        <Header>Positions</Header>
+        <Header>{t("dashboard.positions.title")}</Header>
         <ButtonContainer>
-          <Button click={() => navigate("create")}>Create Position</Button>
+          <Button click={() => navigate("create")}>
+            {t("createPosition")}
+          </Button>
         </ButtonContainer>
       </HeaderSection>
       {positions.map((position) => {

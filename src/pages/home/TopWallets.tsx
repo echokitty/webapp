@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { shortenAddress } from "@usedapp/core";
+import { useTranslation } from "react-i18next";
 
 import { Header } from "../../styles/Headers";
 import useTopWallets, { TopWalletType } from "../../app/hooks/use-top-wallets";
@@ -66,6 +67,7 @@ const Data = styled(Item)`
 `;
 
 const TopWallets = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const topWallets = useTopWallets();
 
@@ -73,16 +75,16 @@ const TopWallets = () => {
 
   return (
     <StyledTopWallets>
-      <Header>Top Wallets</Header>
+      <Header>{t("topWallets.title")}</Header>
       <Wallets>
         <Headers>
-          <RowHeader>ENS</RowHeader>
-          <RowHeader>Address</RowHeader>
-          <RowHeader>PNL</RowHeader>
+          <RowHeader>{t("topWallets.headers.ens")}</RowHeader>
+          <RowHeader>{t("topWallets.headers.address")}</RowHeader>
+          <RowHeader>{t("topWallets.headers.pnl")}</RowHeader>
           <RowHeader />
         </Headers>
-        {bestWallets.map((wallet: TopWalletType) => (
-          <Wallet key={wallet.address}>
+        {bestWallets.map((wallet: TopWalletType, index: number) => (
+          <Wallet key={index}>
             <Data>{wallet.ens}</Data>
             <Data>{shortenAddress(wallet.address)}</Data>
             <Data>{`${wallet.pnl}%`}</Data>
@@ -90,7 +92,7 @@ const TopWallets = () => {
               <Button
                 click={() => navigate(`dashboard/create/${wallet.address}`)}
               >
-                Create Position
+                {t("createPosition")}
               </Button>
             </Data>
           </Wallet>

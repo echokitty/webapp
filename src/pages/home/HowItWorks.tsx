@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
 import { Header } from "../../styles/Headers";
 
 interface ItemType {
@@ -6,33 +8,6 @@ interface ItemType {
   description: string;
   image: string;
 }
-
-const items: ItemType[] = [
-  {
-    label: "Lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "",
-  },
-  {
-    label: "Lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "",
-  },
-  {
-    label: "Lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "",
-  },
-  {
-    label: "Lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    image: "",
-  },
-];
 
 const StyledHowItWorks = styled.div`
   display: flex;
@@ -67,6 +42,7 @@ const ItemHeader = styled.h4`
   font-size: 3rem;
   font-weight: 600;
   margin-bottom: 0.7rem;
+  text-align: center;
 `;
 
 const ItemDescription = styled.p`
@@ -77,9 +53,34 @@ const ItemDescription = styled.p`
 `;
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+
+  const items: ItemType[] = [
+    {
+      label: t("howItWorks.first.title"),
+      description: t("howItWorks.first.description"),
+      image: "",
+    },
+    {
+      label: t("howItWorks.second.title"),
+      description: t("howItWorks.second.description"),
+      image: "",
+    },
+    {
+      label: t("howItWorks.third.title"),
+      description: t("howItWorks.third.description"),
+      image: "",
+    },
+    {
+      label: t("howItWorks.fourth.title"),
+      description: t("howItWorks.fourth.description"),
+      image: "",
+    },
+  ];
+
   return (
     <StyledHowItWorks>
-      <Header>How it works</Header>
+      <Header>{t("howItWorks.title")}</Header>
       <Items>
         {items.map((item: ItemType) => (
           <Item key={item.label}>

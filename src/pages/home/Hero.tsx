@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/Button";
@@ -36,18 +37,15 @@ const SubHeader = styled.h3`
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <StyledHero>
       <Content>
-        <Header>EchoKitty</Header>
-        <SubHeader>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim.
-        </SubHeader>
+        <Header>{t("title")}</Header>
+        <SubHeader>{t("description")}</SubHeader>
         <Button click={() => navigate("dashboard/create")}>
-          Create Position
+          {t("createPosition")}
         </Button>
       </Content>
     </StyledHero>

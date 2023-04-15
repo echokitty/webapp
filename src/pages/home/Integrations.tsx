@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
 import { Header } from "../../styles/Headers";
 
 interface IntegrationType {
@@ -86,13 +88,15 @@ const IconLabel = styled.div`
 `;
 
 const Integrations = () => {
+  const { t } = useTranslation();
+
   return (
     <StyledIntegrations>
-      <Header>Integrations</Header>
+      <Header>{t("integrations.title")}</Header>
       <Items>
         {integrations.map((integration: IntegrationType) => {
           return (
-            <Item>
+            <Item key={integration.name}>
               <Icon src={integration.icon} />
               <IconLabel>{integration.name}</IconLabel>
             </Item>

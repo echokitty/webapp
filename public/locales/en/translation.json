@@ -1,0 +1,51 @@
+{
+  "title": "EchoKitty",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+  "createPosition": "Create Position",
+  "navItems": {
+    "home": "Home",
+    "dashboard": "Dashboard"
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "first": {
+      "title": "Create a position",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+    },
+    "second": {
+      "title": "Get matched",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+    },
+    "third": {
+      "title": "Hire the best candidate",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+    },
+    "fourth": {
+      "title": "Get paid",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+    }
+  },
+  "topWallets": {
+    "title": "Top Wallets",
+    "headers": {
+      "ens": "ENS",
+      "address": "Address",
+      "pnl": "PNL"
+    }
+  },
+  "integrations": {
+    "title": "Integrations"
+  },
+  "dashboard": {
+    "overview": {
+      "title": "Overview",
+      "headers": {
+        "total": "Total Balance",
+        "pnl": "PNL"
+      }
+    },
+    "positions": {
+      "title": "Positions"
+    }
+  }
+}

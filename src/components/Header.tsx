@@ -1,4 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import styled from "styled-components";
 import Socials from "./Socials";
 
@@ -6,17 +8,6 @@ interface NavItemType {
   label: string;
   link: string;
 }
-
-const navItems: NavItemType[] = [
-  {
-    label: "Home",
-    link: "/",
-  },
-  {
-    label: "Dashboard",
-    link: "/dashboard",
-  },
-];
 
 const StyledHeader = styled.div`
   position: relative;
@@ -49,16 +40,28 @@ const NavItem = styled(Link)`
 `;
 
 const Header = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const navItems: NavItemType[] = [
+    {
+      label: t("navItems.home"),
+      link: "/",
+    },
+    {
+      label: t("navItems.dashboard"),
+      link: "/dashboard",
+    },
+  ];
 
   return (
     <StyledHeader>
       <LogoButton onClick={() => navigate("")}>
-        <Logo>EchoKitty</Logo>
+        <Logo>{t("title")}</Logo>
       </LogoButton>
       <NavItems>
-        {navItems.map((navItem: NavItemType) => (
-          <NavItem key={navItem.link} to={navItem.link}>
+        {navItems.map((navItem: NavItemType, index: number) => (
+          <NavItem key={index} to={navItem.link}>
             {navItem.label}
           </NavItem>
         ))}

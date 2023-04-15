@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+
 import Socials from "./Socials";
 
 const StyledFooter = styled.div`
@@ -14,9 +16,11 @@ const Logo = styled.div`
 `;
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <StyledFooter>
-      <Logo>EchoKitty</Logo>
+      <Logo>{t("title")}</Logo>
       <Socials />
     </StyledFooter>
   );

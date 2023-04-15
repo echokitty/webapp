@@ -34,9 +34,9 @@ const SocialImage = styled.img`
 const Socials = () => {
   return (
     <StyledSocials>
-      {socials.map((social: SocialType) => (
+      {socials.map((social: SocialType, index: number) => (
         <SocialLink
-          key={social.link}
+          key={index}
           href={social.link}
           target="_blank"
           rel="noopener noreferrer"
