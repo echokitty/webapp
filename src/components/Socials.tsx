@@ -10,11 +10,11 @@ interface SocialType {
 const socials: SocialType[] = [
   {
     image: twitter,
-    link: "https://twitter.com/ChaseManning_NZ",
+    link: "https://twitter.com/echokittyfi",
   },
   {
     image: discord,
-    link: "https://discord.gg/CaR7RhfDZ6",
+    link: "https://discord.com/invite/4D5rBgMT5G",
   },
 ];
 
@@ -28,7 +28,7 @@ const SocialLink = styled.a`
 `;
 
 const SocialImage = styled.img`
-  height: 2.7rem;
+  height: 4rem;
 `;
 
 const Socials = () => {
