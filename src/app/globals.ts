@@ -1,8 +1,12 @@
+import { utils } from "ethers";
+
 export const LIVE = true;
 
 export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const NATIVE_TOKEN_ADDRESS =
   "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+
+export const SALT = utils.keccak256(utils.randomBytes(32));
 
 interface GlobalsType {
   FACTORY: string;
