@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Connector from "./Connector";
+import Socials from "./Socials";
 
 interface NavItemType {
   label: string;
@@ -13,8 +13,8 @@ const navItems: NavItemType[] = [
     link: "/",
   },
   {
-    label: "Another Page",
-    link: "/another",
+    label: "Dashboard",
+    link: "/dashboard",
   },
 ];
 
@@ -25,7 +25,10 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  border: solid 1px blue;
+`;
+
+const LogoButton = styled.button`
+  cursor: pointer;
 `;
 
 const Logo = styled.div`
@@ -46,9 +49,13 @@ const NavItem = styled(Link)`
 `;
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <StyledHeader>
-      <Logo>components/Header.tsx</Logo>
+      <LogoButton onClick={() => navigate("")}>
+        <Logo>EchoKitty</Logo>
+      </LogoButton>
       <NavItems>
         {navItems.map((navItem: NavItemType) => (
           <NavItem key={navItem.link} to={navItem.link}>
@@ -56,7 +63,7 @@ const Header = () => {
           </NavItem>
         ))}
       </NavItems>
-      <Connector />
+      <Socials />
     </StyledHeader>
   );
 };
