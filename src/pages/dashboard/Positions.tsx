@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import usePositions from "../../app/hooks/use-positions";
+// import usePositions from "../../app/hooks/use-positions";
 import { Header } from "../../styles/Headers";
 import Button from "../../components/Button";
+import { usePositions } from "../../contracts/views";
+import usePrices from "../../app/hooks/use-prices";
 
 const StyledPositions = styled.div`
   width: 100%;
@@ -27,10 +29,32 @@ const ButtonContainer = styled.div`
 
 const Position = styled.div`
   display: flex;
-  border: solid 1px pink;
-  padding: 0.7rem 2rem;
+  width: 100%;
+  align-items: center;
+  padding: 2rem 3rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  background: var(--bg);
+`;
+
+const Section = styled.div`
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
+const SectionHeader = styled.div`
+  color: var(--sub);
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 1rem;
-  border-radius: 0.5rem;
+`;
+
+const SectionValue = styled.div`
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 `;
 
 const Positions = () => {
@@ -38,6 +62,23 @@ const Positions = () => {
 
   const navigate = useNavigate();
   const positions = usePositions();
+
+  const tokens: string[] = [];
+
+  (positions || []).forEach((position) => {
+    position.tokens.forEach((token) => {
+      if (!tokens.includes(token.tokenAddress)) {
+        tokens.push(token.tokenAddress);
+      }
+    });
+  });
+
+  const prices = usePrices(tokens);
+  console.log("prices", prices);
+
+  if (!positions || !prices) {
+    return null;
+  }
 
   return (
     <StyledPositions>
@@ -52,8 +93,18 @@ const Positions = () => {
       {positions.map((position) => {
         return (
           <Position key={position.id}>
-            <div>{position.address}</div>
-            <div>{position.balance}</div>
+            <Section>
+              <SectionHeader>
+                {t("dashboard.overview.headers.address")}
+              </SectionHeader>
+              <SectionValue>{position.tracking}</SectionValue>
+
+              <SectionHeader>
+                {t("dashboard.overview.headers.total")}
+              </SectionHeader>
+              <SectionValue>{position.tokens}</SectionValue>
+            </Section>
+            <Section>pie</Section>
           </Position>
         );
       })}

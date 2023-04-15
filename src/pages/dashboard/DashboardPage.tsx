@@ -5,6 +5,7 @@ import Overview from "./Overview";
 import Positions from "./Positions";
 import CreatePosition from "./CreatePosition";
 import WalletSelector from "../../components/WalletSelector";
+import { usePositions, useSubwallets, useWallet } from "../../contracts/views";
 
 const StyledDashboardPage = styled.div`
   width: 100%;
@@ -13,6 +14,7 @@ const StyledDashboardPage = styled.div`
   align-items: center;
   flex: 1;
   padding: var(--section-spacing);
+  background-color: var(--pink);
 
   @media (max-width: 768px) {
     padding: var(--section-spacing-mobile);
@@ -21,6 +23,15 @@ const StyledDashboardPage = styled.div`
 
 const DashboardPage = () => {
   const { address, action } = useParams<"address" | "action">();
+
+  const wallet = useWallet();
+  console.log(wallet);
+
+  const wallets = useSubwallets();
+  console.log(wallets);
+
+  const positions = usePositions();
+  console.log("positions", positions);
 
   return (
     <StyledDashboardPage>
