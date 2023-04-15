@@ -5,16 +5,19 @@ const URL = "https://coins.llama.fi/prices/current/";
 const usePrices = (tokens: string[]): Record<string, number> | null => {
   const [prices, setPrices] = useState<Record<string, number> | null>(null);
 
+  const { length } = tokens;
+
   const fetchPrices = async () => {
-    console.log("getting prices");
-    console.log(tokens);
     if (tokens.length === 0) return;
     const prices_: Record<string, number> = {};
 
-    const response = await fetch(`${URL}ethereum:${tokens.join(",ethereum:")}`);
+    const network = "polygon";
+
+    const url = `${URL}${network}:${tokens.join(`,${network}:`)}`;
+    const response = await fetch(url);
     const data = await response.json();
     tokens.forEach((token) => {
-      prices_[token] = data.coins[`ethereum:${token}`].price;
+      prices_[token] = data.coins[`${network}:${token}`].price;
     });
 
     setPrices(prices_);
@@ -22,7 +25,7 @@ const usePrices = (tokens: string[]): Record<string, number> | null => {
 
   useEffect(() => {
     fetchPrices();
-  }, [tokens]);
+  }, [length]);
 
   return prices;
 };
