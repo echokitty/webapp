@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Overview from "./Overview";
+import Positions from "./Positions";
 
 const StyledDashboardPage = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const DashboardPage = () => {
   return (
     <StyledDashboardPage>
       <Overview />
+      <Positions />
     </StyledDashboardPage>
   );
 };
