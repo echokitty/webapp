@@ -8,8 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const StyledPieChart = styled.div`
   position: relative;
   display: flex;
-  width: 100%;
-  height: 20rem;
+  width: 50rem;
 
   canvas {
     position: absolute;
