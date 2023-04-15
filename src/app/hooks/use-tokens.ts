@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { utils } from "ethers";
+
+import { ZERO_ADDRESS } from "../globals";
 
 export interface Token {
   address: string;
@@ -29,6 +32,8 @@ const useTokens = (chain: string, address: string) => {
   };
 
   const getTokens = async () => {
+    if (!address || address === ZERO_ADDRESS) return;
+    if (utils.isAddress(address) === false) return;
     // get it here
     // Save it to setTokens
     const headers = new Headers();
@@ -51,7 +56,7 @@ const useTokens = (chain: string, address: string) => {
 
   useEffect(() => {
     getTokens();
-  }, []);
+  }, [address]);
 
   return tokens;
 };
