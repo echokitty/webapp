@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 import usePositions from "../../app/hooks/use-positions";
 import { Header } from "../../styles/Headers";
+import Button from "../../components/Button";
 
 const StyledPositions = styled.div`
   width: 100%;
@@ -8,6 +11,17 @@ const StyledPositions = styled.div`
   flex-direction: column;
   max-width: 140rem;
   margin-top: 8rem;
+  z-index: 1;
+`;
+
+const HeaderSection = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 1rem;
 `;
 
 const Position = styled.div`
@@ -19,11 +33,17 @@ const Position = styled.div`
 `;
 
 const Positions = () => {
+  const navigate = useNavigate();
   const positions = usePositions();
 
   return (
     <StyledPositions>
-      <Header>Positions</Header>
+      <HeaderSection>
+        <Header>Positions</Header>
+        <ButtonContainer>
+          <Button click={() => navigate("create")}>Create Position</Button>
+        </ButtonContainer>
+      </HeaderSection>
       {positions.map((position) => {
         return (
           <Position key={position.id}>
