@@ -1,4 +1,4 @@
-import { useWeb3React } from "@web3-react/core";
+import { useEthers } from "@usedapp/core";
 import { useEffect, useState } from "react";
 
 const useENS = (
@@ -7,16 +7,17 @@ const useENS = (
   ensName: string | null;
   ensAvatar: string | null;
 } => {
-  const { library } = useWeb3React();
+  const { library } = useEthers();
   const [ensName, setENSName] = useState<string | null>(null);
   const [ensAvatar, setENSAvatar] = useState<string | null>(null);
 
   const resolveENS = async (): Promise<void> => {
     setENSAvatar(null);
-    const ensName = await library.provider.lookupAddress(address);
+    if (!library) return;
+    const ensName = await library.lookupAddress(address);
     setENSName(ensName);
     if (!ensName) return;
-    const resolver = await library.provider.getResolver(ensName);
+    const resolver = await library.getResolver(ensName);
     if (!resolver) return;
     const avatar = await resolver.getAvatar();
     if (!avatar) return;
@@ -25,7 +26,7 @@ const useENS = (
 
   useEffect(() => {
     resolveENS();
-  }, [address]);
+  }, [address, library]);
 
   return { ensName, ensAvatar };
 };
