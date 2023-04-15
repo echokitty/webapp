@@ -73,7 +73,7 @@ const TopWallets = () => {
         <Headers>
           <RowHeader>{t("topWallets.headers.address")}</RowHeader>
           <RowHeader>{t("topWallets.headers.pnl")}</RowHeader>
-          <RowHeader>{t("topWallets.headers.lens")}</RowHeader>
+          {/* <RowHeader>{t("topWallets.headers.lens")}</RowHeader> */}
           <RowHeader />
         </Headers>
         {bestWallets.map((wallet: TopWalletType, index: number) => (

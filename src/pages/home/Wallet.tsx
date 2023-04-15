@@ -64,7 +64,7 @@ const Wallet = ({ wallet }: Props) => {
         {wallet.ens || shortenAddress(wallet.address)}
       </Data>
       <Data>{`${wallet.pnl.toLocaleString()}%`}</Data>
-      <Data>{wallet.ens}</Data>
+      {/* <Data>{wallet.ens}</Data> */}
       <Data>
         {/* <Button click={() => navigate(`dashboard/create/${wallet.address}`)}> */}
         <Button click={() => console.log("meow")}>
