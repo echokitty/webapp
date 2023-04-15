@@ -5,13 +5,14 @@ import { useTranslation } from "react-i18next";
 
 import { TopWalletType } from "../../app/hooks/use-top-wallets";
 import Button from "../../components/Button";
-import useENS from "../../app/hooks/use-ens";
+// import useENS from "../../app/hooks/use-ens";
 
 const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 7rem;
 
   div:last-child {
     flex: 1;
@@ -33,14 +34,17 @@ const Item = styled.div`
 `;
 
 const Data = styled(Item)`
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 500;
   text-align: left;
+  display: flex;
+  align-items: center;
 `;
 
 const Icon = styled.img`
-  height: 2rem;
+  height: 5rem;
   border-radius: 50%;
+  margin-right: 2rem;
 `;
 
 interface Props {
@@ -51,19 +55,21 @@ const Wallet = ({ wallet }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const { ensName, ensAvatar } = useENS(wallet.address);
+  // const { ensName, ensAvatar } = useENS(wallet.address);
 
   return (
     <StyledWallet>
       <Data>
-        {ensAvatar && <Icon src={ensAvatar} />}
-        {ensName || shortenAddress(wallet.address)}
+        {wallet.image && <Icon src={wallet.image} />}
+        {wallet.ens || shortenAddress(wallet.address)}
       </Data>
-      <Data>{`${wallet.pnl}%`}</Data>
+      <Data>{`${wallet.pnl.toLocaleString()}%`}</Data>
       <Data>{wallet.ens}</Data>
       <Data>
-        <Button click={() => navigate(`dashboard/create/${wallet.address}`)}>
-          {t("createPosition")}
+        {/* <Button click={() => navigate(`dashboard/create/${wallet.address}`)}> */}
+        <Button click={() => console.log("meow")}>
+          {/* {t("createPosition")} */}
+          {t("comingSoon")}
         </Button>
       </Data>
     </StyledWallet>
