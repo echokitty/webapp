@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
         --primary: #32B2E5;
         --error: red;
         --blue: #C0DBEA;
+        --purple: #BA90C6;
 
         --section-spacing: 8rem;
         --header-footer-padding: 2.5rem 6rem;
