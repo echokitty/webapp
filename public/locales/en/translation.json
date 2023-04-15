@@ -41,8 +41,9 @@
     "overview": {
       "title": "Overview",
       "headers": {
+        "address": "Address",
         "total": "Total Balance",
-        "pnl": "PNL"
+        "pnl": "PnL"
       }
     },
     "positions": {
