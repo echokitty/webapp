@@ -13,6 +13,7 @@ const StyledDashboardPage = styled.div`
   align-items: center;
   flex: 1;
   padding: var(--section-spacing);
+  background-color: var(--pink);
 
   @media (max-width: 768px) {
     padding: var(--section-spacing-mobile);

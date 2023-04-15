@@ -41,12 +41,23 @@
     "overview": {
       "title": "Overview",
       "headers": {
+        "address": "Address",
         "total": "Total Balance",
-        "pnl": "PNL"
+        "pnl": "PnL"
       }
     },
     "positions": {
       "title": "Positions"
+    },
+    "create": {
+      "title": "Initialize account"
     }
+  },
+  "create": {
+    "header": "Echo Position",
+    "button": "Echo",
+    "address": "Copy/paste the address you want to echo.....",
+    "amount": "Type in the amount you want to invest...",
+    "shopping": "Shopping List"
   }
 }

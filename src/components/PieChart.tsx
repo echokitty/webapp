@@ -5,32 +5,37 @@ import { roundToDp } from "../app/lib/formatting";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+interface ChartProps {
+  width?: string;
+}
+
 const StyledPieChart = styled.div`
   position: relative;
   display: flex;
-  width: 50rem;
+  width: ${(props: ChartProps) => props.width || "30rem;"};
 
-  canvas {
+  /* canvas {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+  } */
 `;
 
 interface Props {
   labels: string[];
   data: number[];
+  width?: string;
 }
 
-const PieChart = ({ labels, data }: Props) => {
+const PieChart = ({ labels, data, width }: Props) => {
   const chartData = {
     labels,
     datasets: [
       {
         label: "Token breakdown",
         data,
-        backgroundColor: ["red", "pink", "blue", "green"],
+        backgroundColor: ["#F8F8F8", "#85B6FF", "#FFD234", "#D99BFF"],
       },
     ],
   };
@@ -38,7 +43,7 @@ const PieChart = ({ labels, data }: Props) => {
   const options = {
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: "right" as any,
       },
       tooltip: {
@@ -55,7 +60,7 @@ const PieChart = ({ labels, data }: Props) => {
 
   return (
     <StyledPieChart>
-      <Pie data={chartData} options={options} />
+      <Pie width={width} data={chartData} options={options} />
     </StyledPieChart>
   );
 };

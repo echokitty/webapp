@@ -10,6 +10,7 @@ const StyledFooter = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: var(--header-footer-padding);
+  background: var(--purple);
 `;
 
 const LogoButton = styled.button`
