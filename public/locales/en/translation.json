@@ -48,6 +48,9 @@
     },
     "positions": {
       "title": "Positions"
+    },
+    "create": {
+      "title": "Initialize account"
     }
   },
   "create": {
