@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+
 import Overview from "./Overview";
 import Positions from "./Positions";
+import CreatePosition from "./CreatePosition";
 
 const StyledDashboardPage = styled.div`
   width: 100%;
@@ -12,10 +15,13 @@ const StyledDashboardPage = styled.div`
 `;
 
 const DashboardPage = () => {
+  const { address, action } = useParams<"address" | "action">();
+
   return (
     <StyledDashboardPage>
       <Overview />
       <Positions />
+      <CreatePosition show={action === "create"} address={address} />
     </StyledDashboardPage>
   );
 };

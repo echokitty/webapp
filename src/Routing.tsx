@@ -11,6 +11,11 @@ const Routing = () => {
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="dashboard/:action" element={<DashboardPage />} />
+          <Route
+            path="dashboard/:action/:address"
+            element={<DashboardPage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
