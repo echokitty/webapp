@@ -2,25 +2,13 @@ import wethAbi from "./weth.json";
 import useGlobals from "../app/hooks/use-globals";
 import useContract from "../app/hooks/use-contract";
 
-// export const useWrap = () => {
+// export const useWrap = (wallet: string) => {
 //   const globals = useGlobals();
 
 //   const { state: wrapState, send: wrap } = useContract(
-//     globals.WETH,
+//     globals.FACTORY,
 //     wethAbi,
-//     "deposit",
-//     "Wrap"
-//   );
-//   return { wrapState, wrap };
-// };
-
-// export const use = () => {
-//   const globals = useGlobals();
-
-//   const { state: wrapState, send: wrap } = useContract(
-//     globals.WETH,
-//     wethAbi,
-//     "deposit",
+//     "deposit"
 //     "Wrap"
 //   );
 //   return { wrapState, wrap };
