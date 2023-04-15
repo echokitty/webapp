@@ -1,6 +1,6 @@
 import { useEthers } from "@usedapp/core";
-import { utils } from "ethers";
-import { NATIVE_TOKEN_ADDRESS, ZERO_ADDRESS } from "../app/globals";
+import { utils, BigNumber } from "ethers";
+import { NATIVE_TOKEN_ADDRESS, SALT, ZERO_ADDRESS } from "../app/globals";
 import useContract from "../app/hooks/use-contract";
 import smartWalletAbi from "./smart-wallet.json";
 import { usePredictedSubWalletAddress, useWallet } from "./views";
@@ -17,9 +17,9 @@ import { usePredictedSubWalletAddress, useWallet } from "./views";
 //   return { wrapState, wrap };
 // };
 
-type Swap = {
+export type Swap = {
   toToken: string;
-  fromAmount: number;
+  fromAmount: string;
   slippage?: number;
 };
 
@@ -46,19 +46,17 @@ async function getSwapData(
   url.searchParams.set("disableEstimate", "true");
   const res = await fetch(url.toString());
   const json = await res.json();
-  return json as object;
+  return json as any;
 }
 
-export const useCreatePosition = (target: string) => {
-  const wallet = useWallet();
+export const useCreatePosition = (target: string, value: BigNumber) => {
+  const wallet = useWallet() || ZERO_ADDRESS;
   const { chainId } = useEthers();
 
-  const salt = utils.keccak256(utils.randomBytes(32));
-
-  const predictedAddress = usePredictedSubWalletAddress(salt, target);
+  const predictedAddress = usePredictedSubWalletAddress(wallet, SALT, target);
 
   const { state: createPositionState, send } = useContract(
-    wallet || ZERO_ADDRESS,
+    wallet,
     smartWalletAbi,
     "createSubwallet",
     "CreatePosition"
@@ -71,7 +69,7 @@ export const useCreatePosition = (target: string) => {
       )
     );
     const swapParams = oneInchSwaps.map((s) => format1inchSwap(s));
-    return send(salt, [target, swapParams]);
+    return send(SALT, [target, swapParams], { value, gasLimit: 2_500_000 });
   };
 
   return { createPositionState, createPosition };
