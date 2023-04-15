@@ -56,7 +56,15 @@ const TopWallets = () => {
   const { t } = useTranslation();
   const topWallets = useTopWallets();
 
-  const bestWallets = topWallets.slice(0, 6);
+  const bestWallets = topWallets.slice(0, 6).sort((a, b) => {
+    if (a.pnl > b.pnl) {
+      return -1;
+    }
+    if (a.pnl < b.pnl) {
+      return 1;
+    }
+    return 0;
+  });
 
   return (
     <StyledTopWallets>
