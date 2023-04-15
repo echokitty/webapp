@@ -32,7 +32,7 @@ const Option = styled.button`
   margin: 0.7rem 0;
   cursor: pointer;
   background: white;
-  border: solid 1px var(--sub);
+  border-radius: 1.2rem;
 
   padding: 0.9rem 1.2rem;
   @media (max-width: 600px) {
@@ -65,7 +65,7 @@ const WalletSelector = (): JSX.Element => {
     <Popup
       show={!account}
       close={() => dispatch(walletConnected())}
-      header="Connect to a wallet"
+      header="Connect  wallet"
     >
       <Option onClick={() => activateBrowserWallet()}>
         <Name>Metamask</Name>
