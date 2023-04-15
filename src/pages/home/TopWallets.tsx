@@ -87,7 +87,9 @@ const TopWallets = () => {
             <Data>{shortenAddress(wallet.address)}</Data>
             <Data>{`${wallet.pnl}%`}</Data>
             <Data>
-              <Button click={() => navigate("dashboard")}>
+              <Button
+                click={() => navigate(`dashboard/create/${wallet.address}`)}
+              >
                 Create Position
               </Button>
             </Data>
