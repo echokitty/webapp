@@ -17,14 +17,14 @@ const StyledButton = styled.button`
   white-space: nowrap;
   border-radius: 0.5rem;
 
-  border: ${(props: ButtonProps) => (props.primary ? "0" : "1px")} solid
-    var(--main);
   background-color: ${(props: ButtonProps) =>
-    props.primary ? "var(--blue)" : "var(--bg)"};
+    props.primary ? "var(--blue)" : "var(--purple)"};
   padding: ${(props: ButtonProps) =>
     props.large ? "1.5rem 3rem" : "1rem 2rem"};
   font-size: ${(props: ButtonProps) => (props.large ? "2rem" : "1.6rem")};
-  font-weight: ${(props: ButtonProps) => (props.large ? "500" : "500")};
+  font-weight: ${(props: ButtonProps) => (props.large ? "500" : "400")};
+  color: ${(props: ButtonProps) =>
+    props.primary ? "var(--main)" : "var(--bg)"};
 
   :disabled {
     cursor: auto;
