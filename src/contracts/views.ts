@@ -186,3 +186,51 @@ export const usePositions = (): PositionType[] | null => {
 
   return positions;
 };
+
+export const useBalances = (
+  tokens: string[],
+  user: string
+): Record<string, number> => {
+  const balancesData = useContractCalls(
+    tokens
+      ? tokens.map((token) => ({
+          abi: new utils.Interface(erc20Abi),
+          address: token,
+          method: "balanceOf",
+          args: [user],
+        }))
+      : []
+  );
+
+  const decimals = useContractCalls(
+    tokens
+      ? tokens.map((token) => ({
+          abi: new utils.Interface(erc20Abi),
+          address: token,
+          method: "decimals",
+          args: [],
+        }))
+      : []
+  );
+
+  const balances: Record<string, number> = {};
+
+  if (balancesData) {
+    balancesData.forEach((balanceData, index: number) => {
+      if (balanceData) {
+        balanceData.forEach((balance) => {
+          if (balance) {
+            const token = tokens[index];
+            const rawBalance = Number(balance.toString());
+            const tokenDecimals = decimals[index];
+            if (!tokenDecimals) return;
+            const tokenDecimalsNumber = Number(tokenDecimals.toString());
+            balances[token] = rawBalance / 10 ** tokenDecimalsNumber;
+          }
+        });
+      }
+    });
+  }
+
+  return balances;
+};
