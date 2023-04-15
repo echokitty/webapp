@@ -30,6 +30,11 @@ const StyledButton = styled.button`
     cursor: auto;
     background-color: var(--sub);
   }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+  }
 `;
 
 interface Props {

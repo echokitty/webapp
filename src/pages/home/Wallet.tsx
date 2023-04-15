@@ -18,6 +18,10 @@ const Row = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;
 
@@ -45,6 +49,10 @@ const Icon = styled.img`
   height: 5rem;
   border-radius: 50%;
   margin-right: 2rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 interface Props {

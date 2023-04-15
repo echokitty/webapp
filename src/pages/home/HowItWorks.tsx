@@ -15,14 +15,18 @@ const StyledHowItWorks = styled.div`
   padding: var(--section-spacing);
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: var(--section-spacing-mobile);
+  }
 `;
 
 const Items = styled.div`
   width: 100%;
   max-width: 140rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
 `;
 
 const Item = styled.div`
@@ -51,15 +55,19 @@ const Number = styled.div`
   left: 2rem;
   font-size: 2.4rem;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
-const ItemImage = styled.div`
-  position: relative;
-  height: 8rem;
-  width: 8rem;
-  background-color: pink;
-  margin-bottom: 1.5rem;
-`;
+// const ItemImage = styled.div`
+//   position: relative;
+//   height: 8rem;
+//   width: 8rem;
+//   background-color: pink;
+//   margin-bottom: 1.5rem;
+// `;
 
 const ItemHeader = styled.h4`
   position: relative;
@@ -67,6 +75,11 @@ const ItemHeader = styled.h4`
   font-weight: 600;
   margin-bottom: 0.7rem;
   text-align: center;
+  margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const ItemDescription = styled.p`
@@ -75,6 +88,10 @@ const ItemDescription = styled.p`
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const HowItWorks = () => {
@@ -111,7 +128,7 @@ const HowItWorks = () => {
           <Item key={item.label}>
             <Background />
             <Number>{`${index + 1}.`}</Number>
-            <ItemImage />
+            {/* <ItemImage /> */}
             <ItemHeader>{item.label}</ItemHeader>
             <ItemDescription>{item.description}</ItemDescription>
           </Item>

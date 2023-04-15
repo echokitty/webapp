@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Header } from "../../styles/Headers";
@@ -12,6 +12,10 @@ const StyledTopWallets = styled.div`
   padding: var(--section-spacing);
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: var(--section-spacing-mobile);
+  }
 `;
 
 const Wallets = styled.div`
@@ -31,6 +35,10 @@ const Row = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `;
 

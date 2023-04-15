@@ -26,6 +26,10 @@ const Header = styled.h1`
   font-weight: 600;
   margin-bottom: 1rem;
   font-family: "magic-retro", sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 6rem;
+  }
 `;
 
 const SubHeader = styled.h3`
@@ -35,6 +39,10 @@ const SubHeader = styled.h3`
   font-weight: 500;
   margin-bottom: 5rem;
   max-width: 70rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const Hero = () => {

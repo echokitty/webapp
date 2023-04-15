@@ -37,6 +37,10 @@ const StyledIntegrations = styled.div`
   padding: var(--section-spacing);
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: var(--section-spacing-mobile);
+  }
 `;
 
 const Items = styled.div`

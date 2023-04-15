@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         --purple: #BA90C6;
 
         --section-spacing: 8rem;
+        --section-spacing-mobile: 4rem 1.5rem;
         --header-footer-padding: 2.5rem 6rem;
     }
 

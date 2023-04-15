@@ -13,6 +13,10 @@ const StyledDashboardPage = styled.div`
   align-items: center;
   flex: 1;
   padding: var(--section-spacing);
+
+  @media (max-width: 768px) {
+    padding: var(--section-spacing-mobile);
+  }
 `;
 
 const DashboardPage = () => {
