@@ -1,9 +1,14 @@
-import { useContractCall, useContractCalls, useEthers } from "@usedapp/core";
+import {
+  useContractCall,
+  useContractCalls,
+  useEtherBalance,
+  useEthers,
+} from "@usedapp/core";
 import { utils } from "ethers";
 
 import erc20Abi from "./erc20.json";
 import useGlobals from "../app/hooks/use-globals";
-import { ZERO_ADDRESS } from "../app/globals";
+import { NATIVE_TOKEN_ADDRESS, ZERO_ADDRESS } from "../app/globals";
 import usePrices from "../app/hooks/use-prices";
 
 export const useTokenSymbol = (token: string) => {
@@ -110,7 +115,7 @@ export const usePositions = (): PositionType[] | null => {
       : []
   );
 
-  const uniqueTokens: string[] = [];
+  const uniqueTokens: string[] = [NATIVE_TOKEN_ADDRESS];
 
   if (tokens) {
     tokens.forEach((tokenList) => {
@@ -209,9 +214,12 @@ export const useBalances = (
   tokens: string[],
   user: string
 ): Record<string, number> => {
+  const ercTokens = (tokens || []).filter(
+    (token) => token !== NATIVE_TOKEN_ADDRESS
+  );
   const balancesData = useContractCalls(
-    tokens
-      ? tokens.map((token) => ({
+    ercTokens
+      ? ercTokens.map((token) => ({
           abi: new utils.Interface(erc20Abi),
           address: token,
           method: "balanceOf",
@@ -221,8 +229,8 @@ export const useBalances = (
   );
 
   const decimals = useContractCalls(
-    tokens
-      ? tokens.map((token) => ({
+    ercTokens
+      ? ercTokens.map((token) => ({
           abi: new utils.Interface(erc20Abi),
           address: token,
           method: "decimals",
@@ -233,12 +241,19 @@ export const useBalances = (
 
   const balances: Record<string, number> = {};
 
+  const allTokens = ercTokens;
+
+  const nativeBalance = useEtherBalance(user);
+  balancesData.push([nativeBalance]);
+  decimals.push([18]);
+  allTokens.push(NATIVE_TOKEN_ADDRESS);
+
   if (balancesData) {
     balancesData.forEach((balanceData, index: number) => {
       if (balanceData) {
         balanceData.forEach((balance) => {
           if (balance) {
-            const token = tokens[index];
+            const token = allTokens[index];
             const rawBalance = Number(balance.toString());
             const tokenDecimals = decimals[index];
             if (!tokenDecimals) return;

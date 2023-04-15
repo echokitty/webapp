@@ -36,6 +36,9 @@ const Logo = styled.img`
 const NavItems = styled.div`
   display: flex;
   margin-left: 6rem;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavItem = styled(Link)`

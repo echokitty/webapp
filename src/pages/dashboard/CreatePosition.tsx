@@ -11,7 +11,12 @@ import useTokens, { Token } from "../../app/hooks/use-tokens";
 import { API_NATIVE, ZERO_ADDRESS } from "../../app/globals";
 import usePrices from "../../app/hooks/use-prices";
 import { roundToDp } from "../../app/lib/formatting";
-import { Swap, useCreatePosition } from "../../contracts/functions";
+import {
+  Swap,
+  useCreatePosition,
+  useCreateWallet,
+} from "../../contracts/functions";
+import { useWallet } from "../../contracts/views";
 
 const StyledCreatePosition = styled.div`
   display: flex;
@@ -79,10 +84,20 @@ const CreatePosition = ({ show, address }: Props) => {
   const [amount, setAmount] = useState<string | undefined>(undefined);
   const tokens = useTokens("matic-mainnet", address_ || ZERO_ADDRESS);
   const prices = usePrices(tokens.map((token: Token) => token.address));
+  const wallet = useWallet();
   const { createPositionState, createPosition } = useCreatePosition(
     address_ || ZERO_ADDRESS,
     stringToScaledBigNumber(amount || "0")
   );
+  const { createWallet } = useCreateWallet();
+
+  const createPositionOrWallet = async (swaps: Swap[]) => {
+    if (wallet) {
+      createPosition(swaps);
+    } else {
+      createWallet();
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -93,7 +108,9 @@ const CreatePosition = ({ show, address }: Props) => {
   }, [address]);
 
   const header: string = t("create.header");
-  const buttonText: string = t("create.button");
+  const buttonText: string = wallet
+    ? t("create.button")
+    : t("initialize.button");
   const createAddress: string = t("create.address");
   const createAmount: string = t("create.amount");
 
@@ -129,15 +146,13 @@ const CreatePosition = ({ show, address }: Props) => {
       };
     });
 
-  console.log(swaps);
-
   return (
     <Popup
       header={header}
       show={show}
       close={() => navigate("/dashboard")}
       buttonText={buttonText}
-      buttonAction={() => createPosition(swaps)}
+      buttonAction={() => createPositionOrWallet(swaps)}
       width="60rem"
     >
       <StyledCreatePosition>

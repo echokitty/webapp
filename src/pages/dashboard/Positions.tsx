@@ -7,6 +7,7 @@ import Button from "../../components/Button";
 import { usePositions } from "../../contracts/views";
 import usePrices from "../../app/hooks/use-prices";
 import Position from "./Position";
+import { NATIVE_TOKEN_ADDRESS } from "../../app/globals";
 
 const StyledPositions = styled.div`
   width: 100%;
@@ -33,7 +34,7 @@ const Positions = () => {
   const navigate = useNavigate();
   const positions = usePositions();
 
-  const tokens: string[] = [];
+  const tokens: string[] = [NATIVE_TOKEN_ADDRESS];
 
   (positions || []).forEach((position) => {
     position.tokens.forEach((token) => {

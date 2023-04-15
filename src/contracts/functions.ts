@@ -1,6 +1,12 @@
 import { useEthers } from "@usedapp/core";
 import { utils, BigNumber } from "ethers";
-import { NATIVE_TOKEN_ADDRESS, SALT, ZERO_ADDRESS } from "../app/globals";
+import {
+  DEFAULT_BOT,
+  NATIVE_TOKEN_ADDRESS,
+  POLYGON_GLOBALS,
+  SALT,
+  ZERO_ADDRESS,
+} from "../app/globals";
 import useContract from "../app/hooks/use-contract";
 import smartWalletAbi from "./smart-wallet.json";
 import { usePredictedSubWalletAddress, useWallet } from "./views";
@@ -48,6 +54,17 @@ async function getSwapData(
   const json = await res.json();
   return json as any;
 }
+
+export const useCreateWallet = () => {
+  const { state: createWalletState, send } = useContract(
+    POLYGON_GLOBALS.FACTORY,
+    ["function createWallet(address) returns (address)"],
+    "createWallet",
+    "CreateWallet"
+  );
+  const createWallet = (...args: any[]) => send(DEFAULT_BOT, ...args);
+  return { createWalletState, createWallet };
+};
 
 export const useCreatePosition = (target: string, value: BigNumber) => {
   const wallet = useWallet() || ZERO_ADDRESS;

@@ -59,5 +59,8 @@
     "address": "Copy/paste the address you want to echo.....",
     "amount": "Type in the amount you want to invest...",
     "shopping": "Shopping List"
+  },
+  "initialize": {
+    "button": "Initialize account"
   }
 }

@@ -5,6 +5,7 @@ import { PositionType, useBalances } from "../../contracts/views";
 import { roundToDp } from "../../app/lib/formatting";
 import PieChart from "../../components/PieChart";
 import usePrices from "../../app/hooks/use-prices";
+import { NATIVE_TOKEN_ADDRESS } from "../../app/globals";
 
 const StyledPosition = styled.div`
   display: flex;
@@ -47,6 +48,9 @@ interface Props {
 const Position = ({ position }: Props) => {
   const { t } = useTranslation();
   const tokens = position.tokens.map((token) => token.tokenAddress);
+  if (!tokens.includes(NATIVE_TOKEN_ADDRESS)) {
+    tokens.push(NATIVE_TOKEN_ADDRESS);
+  }
   const balances = useBalances(tokens, position.address);
   const prices = usePrices(tokens);
 
