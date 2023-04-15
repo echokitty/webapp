@@ -11,7 +11,7 @@ const StyledHero = styled.div`
   justify-content: center;
   padding: 5rem;
   width: 100%;
-  height: 70vh;
+  height: calc(100vh - 112px);
 `;
 
 const Content = styled.div`
@@ -21,9 +21,11 @@ const Content = styled.div`
 `;
 
 const Header = styled.h1`
-  font-size: 8rem;
+  font-size: 14rem;
+  line-height: 1;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-family: "magic-retro", sans-serif;
 `;
 
 const SubHeader = styled.h3`
@@ -31,7 +33,7 @@ const SubHeader = styled.h3`
   line-height: 1.2;
   text-align: center;
   font-weight: 500;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   max-width: 70rem;
 `;
 
@@ -44,7 +46,7 @@ const Hero = () => {
       <Content>
         <Header>{t("title")}</Header>
         <SubHeader>{t("description")}</SubHeader>
-        <Button click={() => navigate("dashboard/create")}>
+        <Button large primary click={() => navigate("dashboard/create")}>
           {t("createPosition")}
         </Button>
       </Content>
