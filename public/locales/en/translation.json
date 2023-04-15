@@ -1,6 +1,6 @@
 {
   "title": "EchoKitty",
-  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+  "description": "Copy trade any wallet address",
   "createPosition": "Create Position",
   "navItems": {
     "home": "Home",
@@ -9,28 +9,28 @@
   "howItWorks": {
     "title": "How it works",
     "first": {
-      "title": "Create a position",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+      "title": "Select an address",
+      "description": "Input any wallet address that you want to copy trade or select one from the leaderboard"
     },
     "second": {
-      "title": "Get matched",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+      "title": "Add your filters",
+      "description": "Create your criteria for what type of transactions triggers a copy trade"
     },
     "third": {
-      "title": "Hire the best candidate",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+      "title": "Set your allowance",
+      "description": "Allocate a percent of your funds to your copy trading position"
     },
     "fourth": {
-      "title": "Get paid",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+      "title": "View your positions",
+      "description": "View your trades when they get executed and track your PnL"
     }
   },
   "topWallets": {
     "title": "Top Wallets",
     "headers": {
-      "ens": "ENS",
+      "lens": "Lenster",
       "address": "Address",
-      "pnl": "PNL"
+      "pnl": "1M ROI"
     }
   },
   "integrations": {
