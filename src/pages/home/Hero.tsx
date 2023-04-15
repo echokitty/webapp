@@ -11,7 +11,6 @@ const StyledHero = styled.div`
   padding: 5rem;
   width: 100%;
   height: 80vh;
-  background-color: pink;
 `;
 
 const Content = styled.div`
@@ -20,13 +19,13 @@ const Content = styled.div`
   align-items: center;
 `;
 
-const Header = styled.div`
+const Header = styled.h1`
   font-size: 8rem;
   font-weight: 600;
   margin-bottom: 2rem;
 `;
 
-const SubHeader = styled.div`
+const SubHeader = styled.h3`
   font-size: 2.3rem;
   line-height: 1.2;
   text-align: center;
