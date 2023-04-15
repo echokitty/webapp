@@ -47,10 +47,10 @@ const Header = () => {
   const navigate = useNavigate();
 
   const navItems: NavItemType[] = [
-    {
-      label: t("navItems.home"),
-      link: "/",
-    },
+    // {
+    //   label: t("navItems.home"),
+    //   link: "/",
+    // },
     // {
     //   label: t("navItems.dashboard"),
     //   link: "/dashboard",
