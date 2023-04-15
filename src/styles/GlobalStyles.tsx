@@ -3,13 +3,24 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     :root {
         --bg: #FDF4F5;
-        --main: black;
+        --main: #202124;
         --sub: grey;
         --primary: #32B2E5;
         --error: red;
+        --blue: #C0DBEA;
 
         --section-spacing: 8rem;
         --header-footer-padding: 2.5rem 6rem;
+    }
+
+    @font-face {
+        font-family: 'magic-retro';
+        src: local('magic-retro'), url(./fonts/magic-retro.ttf) format('truetype');
+    }
+
+    @font-face {
+        font-family: 'cute';
+        src: local('cute'), url(./fonts/cute.ttf) format('truetype');
     }
 
     * {
