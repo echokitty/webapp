@@ -19,6 +19,11 @@ const StyledHeader = styled.div`
   padding: var(--header-footer-padding);
 `;
 
+const LeftSection = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const LogoButton = styled.button`
   cursor: pointer;
 `;
@@ -28,15 +33,12 @@ const Logo = styled.img`
 `;
 
 const NavItems = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
   display: flex;
-  transform: translate(-50%, -50%);
+  margin-left: 6rem;
 `;
 
 const NavItem = styled(Link)`
-  margin: 0 1rem;
+  margin: 0 5rem;
   font-size: 2rem;
 `;
 
@@ -57,16 +59,18 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <LogoButton onClick={() => navigate("")}>
-        <Logo src={logo} alt="EchoKitty Logo" />
-      </LogoButton>
-      <NavItems>
-        {navItems.map((navItem: NavItemType, index: number) => (
-          <NavItem key={index} to={navItem.link}>
-            {navItem.label}
-          </NavItem>
-        ))}
-      </NavItems>
+      <LeftSection>
+        <LogoButton onClick={() => navigate("")}>
+          <Logo src={logo} alt="EchoKitty Logo" />
+        </LogoButton>
+        <NavItems>
+          {navItems.map((navItem: NavItemType, index: number) => (
+            <NavItem key={index} to={navItem.link}>
+              {navItem.label}
+            </NavItem>
+          ))}
+        </NavItems>
+      </LeftSection>
       <Socials />
     </StyledHeader>
   );
