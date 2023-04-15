@@ -2,6 +2,7 @@
   "title": "EchoKitty",
   "description": "Copy trade any wallet address",
   "createPosition": "Create Position",
+  "comingSoon": "Coming Soon",
   "navItems": {
     "home": "Home",
     "dashboard": "Dashboard"
@@ -34,7 +35,7 @@
     }
   },
   "integrations": {
-    "title": "Integrations"
+    "title": "Made with"
   },
   "dashboard": {
     "overview": {
