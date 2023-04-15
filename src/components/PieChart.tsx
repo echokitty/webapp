@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const StyledPieChart = styled.div`
   position: relative;
   display: flex;
-  width: 50rem;
+  width: 30rem;
 
   canvas {
     position: absolute;
@@ -30,7 +30,7 @@ const PieChart = ({ labels, data }: Props) => {
       {
         label: "Token breakdown",
         data,
-        backgroundColor: ["red", "pink", "blue", "green"],
+        backgroundColor: ["#F8F8F8", "#85B6FF", "#FFD234", "#D99BFF"],
       },
     ],
   };
@@ -38,7 +38,7 @@ const PieChart = ({ labels, data }: Props) => {
   const options = {
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: "right" as any,
       },
       tooltip: {
