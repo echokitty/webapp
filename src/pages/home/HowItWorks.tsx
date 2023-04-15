@@ -37,7 +37,7 @@ const items: ItemType[] = [
 const StyledHowItWorks = styled.div`
   display: flex;
   width: 100%;
-  padding: 3rem;
+  padding: var(--section-spacing);
   flex-direction: column;
   align-items: center;
 `;
