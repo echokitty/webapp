@@ -48,5 +48,12 @@
     "positions": {
       "title": "Positions"
     }
+  },
+  "create": {
+    "header": "Echo Position",
+    "button": "Echo",
+    "address": "Copy/paste the address you want to echo.....",
+    "amount": "Type in the amount you want to invest...",
+    "shopping": "Shopping List"
   }
 }
