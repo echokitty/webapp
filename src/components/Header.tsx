@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import styled from "styled-components";
 import Socials from "./Socials";
+import logo from "../assets/logo.png";
 
 interface NavItemType {
   label: string;
@@ -22,8 +23,8 @@ const LogoButton = styled.button`
   cursor: pointer;
 `;
 
-const Logo = styled.div`
-  font-size: 2.3rem;
+const Logo = styled.img`
+  height: 6rem;
 `;
 
 const NavItems = styled.div`
@@ -57,7 +58,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <LogoButton onClick={() => navigate("")}>
-        <Logo>{t("title")}</Logo>
+        <Logo src={logo} alt="EchoKitty Logo" />
       </LogoButton>
       <NavItems>
         {navItems.map((navItem: NavItemType, index: number) => (
