@@ -22,10 +22,6 @@ const integrations: IntegrationType[] = [
     icon: "https://storage.googleapis.com/ethglobal-api-production/organizations%2F536ub%2Fimages%2FWhite%20on%20Gradient%20Square.png",
   },
   {
-    name: "Lens Protocol",
-    icon: "https://storage.googleapis.com/ethglobal-api-production/organizations%2Fvxwti%2Flogo%2F1678645512720_Screen%20Shot%202023-03-12%20at%2011.25.01%20AM.png",
-  },
-  {
     name: "Uniswap Foundation",
     icon: "https://storage.googleapis.com/ethglobal-api-production/organizations%2F026zc%2Fimages%2Fimageedit_19_7248710069.png",
   },
