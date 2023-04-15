@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-size: 10px;
         color: var(--main);
+        font-family: 'Roboto', sans-serif;
     }
 
     button {
