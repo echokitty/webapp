@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Hero from "./Hero";
 import HowItWorks from "./HowItWorks";
+import TopWallets from "./TopWallets";
 
 const StyledHomePage = styled.div`
   width: 100%;
@@ -15,6 +16,7 @@ const HomePage = () => {
     <StyledHomePage>
       <Hero />
       <HowItWorks />
+      <TopWallets />
     </StyledHomePage>
   );
 };
