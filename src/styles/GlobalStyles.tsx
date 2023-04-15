@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
         --error: red;
 
         --section-spacing: 8rem;
+        --header-footer-padding: 2.5rem 6rem;
     }
 
     * {
