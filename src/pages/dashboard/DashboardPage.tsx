@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-import Overview from "./Overview";
 import Positions from "./Positions";
 import CreatePosition from "./CreatePosition";
 import WalletSelector from "../../components/WalletSelector";
@@ -25,7 +24,6 @@ const DashboardPage = () => {
 
   return (
     <StyledDashboardPage>
-      <Overview />
       <Positions />
       <CreatePosition show={action === "create"} address={address} />
       <WalletSelector />
