@@ -46,8 +46,10 @@ const Hero = () => {
       <Content>
         <Header>{t("title")}</Header>
         <SubHeader>{t("description")}</SubHeader>
-        <Button large primary click={() => navigate("dashboard/create")}>
-          {t("createPosition")}
+        {/* <Button large primary click={() => navigate("dashboard/create")}> */}
+        <Button large primary click={() => console.log("meow")}>
+          {/* {t("createPosition")} */}
+          {t("comingSoon")}
         </Button>
       </Content>
     </StyledHero>
