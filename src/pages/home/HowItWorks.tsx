@@ -3,6 +3,11 @@ import { useTranslation } from "react-i18next";
 
 import { Header } from "../../styles/Headers";
 
+import a from "../../assets/how-it-works/a.jpeg";
+import b from "../../assets/how-it-works/b.jpeg";
+import c from "../../assets/how-it-works/c.jpeg";
+import d from "../../assets/how-it-works/d.jpeg";
+
 interface ItemType {
   label: string;
   description: string;
@@ -61,13 +66,14 @@ const Number = styled.div`
   }
 `;
 
-// const ItemImage = styled.div`
-//   position: relative;
-//   height: 8rem;
-//   width: 8rem;
-//   background-color: pink;
-//   margin-bottom: 1.5rem;
-// `;
+const ItemImage = styled.img`
+  position: relative;
+  height: 12rem;
+  background-color: pink;
+  margin-bottom: -1rem;
+  mix-blend-mode: multiply;
+  transform: scale(1.05);
+`;
 
 const ItemHeader = styled.h4`
   position: relative;
@@ -101,22 +107,22 @@ const HowItWorks = () => {
     {
       label: t("howItWorks.first.title"),
       description: t("howItWorks.first.description"),
-      image: "",
+      image: a,
     },
     {
       label: t("howItWorks.second.title"),
       description: t("howItWorks.second.description"),
-      image: "",
+      image: b,
     },
     {
       label: t("howItWorks.third.title"),
       description: t("howItWorks.third.description"),
-      image: "",
+      image: c,
     },
     {
       label: t("howItWorks.fourth.title"),
       description: t("howItWorks.fourth.description"),
-      image: "",
+      image: d,
     },
   ];
 
@@ -128,7 +134,7 @@ const HowItWorks = () => {
           <Item key={item.label}>
             <Background />
             <Number>{`${index + 1}.`}</Number>
-            {/* <ItemImage /> */}
+            <ItemImage src={item.image} />
             <ItemHeader>{item.label}</ItemHeader>
             <ItemDescription>{item.description}</ItemDescription>
           </Item>
