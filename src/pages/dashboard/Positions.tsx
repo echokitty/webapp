@@ -14,7 +14,7 @@ const StyledPositions = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  max-width: 140rem;
+  max-width: 110rem;
   margin-top: 8rem;
   z-index: 1;
 `;
@@ -37,6 +37,10 @@ const Position = styled.div`
   margin-bottom: 2rem;
   border-radius: 1rem;
   background: var(--bg);
+
+  div:first-child {
+    flex: 1.5;
+  }
 `;
 
 const Section = styled.div`
@@ -86,7 +90,7 @@ const Positions = () => {
       <HeaderSection>
         <Header>{t("dashboard.positions.title")}</Header>
         <ButtonContainer>
-          <Button click={() => navigate("create")}>
+          <Button primary click={() => navigate("create")}>
             {t("createPosition")}
           </Button>
         </ButtonContainer>

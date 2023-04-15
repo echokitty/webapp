@@ -68,6 +68,7 @@ export const usePositions = (): PositionType[] | null => {
   const abi = [
     "function createdAt() view returns (uint256)",
     "function listTokens() view returns (address[])",
+    "function target() view returns (address)",
   ];
   const createdAt = useContractCalls(
     wallets
@@ -107,7 +108,18 @@ export const usePositions = (): PositionType[] | null => {
 
   const prices = usePrices(uniqueTokens);
 
-  if (!createdAt || !tokens || !wallets || !prices) return null;
+  const targets = useContractCalls(
+    wallets
+      ? wallets.map((wallet) => ({
+          abi: new utils.Interface(abi),
+          address: wallet,
+          method: "target",
+          args: [],
+        }))
+      : []
+  );
+
+  if (!createdAt || !tokens || !wallets || !prices || !targets) return null;
 
   const positions: PositionType[] = [];
 
@@ -117,10 +129,12 @@ export const usePositions = (): PositionType[] | null => {
     const nextTokens = tokens[id];
     if (!nextTokens) return;
     if (!nextTokens[0]) return;
+    const tracking = targets[id];
+    if (!tracking) return;
     const position: PositionType = {
       id,
       address: wallet,
-      tracking: "address",
+      tracking: tracking[0],
       balance: 123,
       pnl: 0,
       tokens: nextTokens[0].map((token: string) => {
