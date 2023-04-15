@@ -115,16 +115,16 @@ const data: PositionType[] = [
         balance: 18119,
       },
       {
-        tokenAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
-        balance: 1819,
+        tokenAddress: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        balance: 181900,
       },
       {
-        tokenAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
-        balance: 119,
+        tokenAddress: "0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919",
+        balance: 119000,
       },
       {
-        tokenAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
-        balance: 8119,
+        tokenAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+        balance: 811900,
       },
     ],
     events: [
