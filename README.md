@@ -6,11 +6,6 @@ This app is a boilerplate template to be used for creating EVM Dapps! :tada:
 It will require modification to fit the needs of your Dapp, but hopefully will serve as a good starting point to get you up and running quicker.  
 An example Dapp is included for converting ETH to WETH, this is to show how you can use the boilerplate to make contract interractions.
 
-## Get started
-
-Before this Dapp is production ready, you will need to make a few changes!  
-First, go to `src/app/globals.ts` and update the `INFURA_ID` with your own Infura ID (You can get one [here](https://infura.io/)).
-
 ### Firebase Setup
 
 - Setup an account with [Firebase](https://firebase.google.com/)

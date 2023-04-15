@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import metamask from "../assets/wallets/metamask.jpg";
 import walletConnect from "../assets/wallets/walletconnect.jpg";
 import Popup from "./Popup";
-import { INFURA_ID } from "../app/globals";
 import { selectConnectingWallet, walletConnected } from "../state/uiSlice";
 
 export const supportedChainIds = [
@@ -25,18 +24,6 @@ export const supportedChainIds = [
   1313161554,
   1666600000,
 ];
-
-export const walletConnectConnector = new WalletConnectConnector({
-  supportedChainIds,
-  rpc: {
-    1: `https://mainnet.infura.io/v3/${INFURA_ID}`,
-    3: `https://ropsten.infura.io/v3/${INFURA_ID}`,
-    4: `https://rinkeby.infura.io/v3/${INFURA_ID}`,
-    5: `https://goerli.infura.io/v3/${INFURA_ID}`,
-    42: `https://kovan.infura.io/v3/${INFURA_ID}`,
-  },
-  qrcode: true,
-});
 
 const Option = styled.button`
   width: 100%;
@@ -85,10 +72,6 @@ const WalletSelector = (): JSX.Element => {
       <Option onClick={() => activateBrowserWallet()}>
         <Name>Metamask</Name>
         <Icon src={metamask} alt="Metamask logo" />
-      </Option>
-      <Option onClick={() => activate(walletConnectConnector)}>
-        <Name>Walletconnect</Name>
-        <Icon src={walletConnect} alt="Walletconnect logo" />
       </Option>
     </Popup>
   );

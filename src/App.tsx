@@ -5,7 +5,6 @@ import { ChainId, Config, DAppProvider } from "@usedapp/core";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Error from "./components/Error";
-import { INFURA_ID } from "./app/globals";
 import WalletSelector from "./components/WalletSelector";
 
 const StyledApp = styled.div`
@@ -18,9 +17,7 @@ const StyledApp = styled.div`
 const config: Config = {
   autoConnect: false,
   readOnlyChainId: ChainId.Mainnet,
-  readOnlyUrls: {
-    [ChainId.Mainnet]: `https://mainnet.infura.io/v3/${INFURA_ID}`,
-  },
+  readOnlyUrls: {},
 };
 
 const App = () => {
