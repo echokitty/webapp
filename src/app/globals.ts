@@ -18,5 +18,5 @@ export const ETH_GLOBALS: GlobalsType = {
 };
 
 export const POLYGON_GLOBALS: GlobalsType = {
-  FACTORY: "0x039F01ef5EbBfd6c59178E1Ac8F1107DcDf98169",
+  FACTORY: "0x88865532AB232aab74C69FEb0409A00133d053d8",
 };
