@@ -57,7 +57,7 @@ const Wallet = ({ wallet }: Props) => {
     <StyledWallet>
       <Data>
         {ensAvatar && <Icon src={ensAvatar} />}
-        {ensName ? ensName : shortenAddress(wallet.address)}
+        {ensName || shortenAddress(wallet.address)}
       </Data>
       <Data>{`${wallet.pnl}%`}</Data>
       <Data>{wallet.ens}</Data>
