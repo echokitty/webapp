@@ -79,7 +79,6 @@ export const usePositions = (): PositionType[] | null => {
         }))
       : []
   );
-  console.log("created ats", createdAt);
 
   const tokens = useContractCalls(
     wallets
@@ -92,15 +91,15 @@ export const usePositions = (): PositionType[] | null => {
       : []
   );
 
-  console.log("tokens", tokens);
-
   const uniqueTokens: string[] = [];
 
   if (tokens) {
     tokens.forEach((tokenList) => {
       if (tokenList) {
         tokenList.forEach((token) => {
-          if (!uniqueTokens.includes(token)) uniqueTokens.push(token);
+          token.forEach((t: any) => {
+            if (t && !uniqueTokens.includes(t)) uniqueTokens.push(t);
+          });
         });
       }
     });
@@ -108,19 +107,29 @@ export const usePositions = (): PositionType[] | null => {
 
   const prices = usePrices(uniqueTokens);
 
-  if (!createdAt || !tokens || !wallets) return null;
+  if (!createdAt || !tokens || !wallets || !prices) return null;
 
   const positions: PositionType[] = [];
 
   wallets.forEach((wallet, id) => {
     // const balance = wallet.
+    if (!tokens) return;
+    const nextTokens = tokens[id];
+    if (!nextTokens) return;
+    if (!nextTokens[0]) return;
     const position: PositionType = {
       id,
       address: wallet,
       tracking: "address",
       balance: 123,
       pnl: 0,
-      tokens: [],
+      tokens: nextTokens[0].map((token: string) => {
+        const tokenBalanceType: TokenBalanceType = {
+          tokenAddress: token,
+          balance: 123,
+        };
+        return tokenBalanceType;
+      }),
     };
     positions.push(position);
   });
