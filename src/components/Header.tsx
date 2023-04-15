@@ -24,7 +24,7 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: var(--header-footer-padding);
 `;
 
 const LogoButton = styled.button`

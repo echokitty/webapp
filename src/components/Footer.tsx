@@ -6,7 +6,7 @@ const StyledFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
+  padding: var(--header-footer-padding);
 `;
 
 const Logo = styled.div`
