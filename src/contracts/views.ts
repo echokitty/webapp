@@ -119,12 +119,48 @@ export const usePositions = (): PositionType[] | null => {
       : []
   );
 
+  // const pairs: { token: string; wallet: string }[] = [];
+
+  // if (uniqueTokens && wallets) {
+  //   uniqueTokens.forEach((token) => {
+  //     wallets.forEach((wallet) => {
+  //       pairs.push({ token, wallet });
+  //     });
+  //   });
+  // }
+
+  // const balancesData = useContractCalls(
+  //   pairs
+  //     ? pairs.map((pair) => ({
+  //         abi: new utils.Interface(erc20Abi),
+  //         address: pair.token,
+  //         method: "balanceOf",
+  //         args: [pair.wallet],
+  //       }))
+  //     : []
+  // );
+
+  // const balances: Record<string, Record<string, number>> = {};
+
+  // if (balancesData) {
+  //   balancesData.forEach((balanceData) => {
+  //     if (balanceData) {
+  //       balanceData.forEach((balance) => {
+  //         if (balance) {
+  //           const wallet = balanceData[0].address;
+  //           const token = balanceData[0].args[0];
+  //           balances[wallet][token]  balance.toString()
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
   if (!createdAt || !tokens || !wallets || !prices || !targets) return null;
 
   const positions: PositionType[] = [];
 
   wallets.forEach((wallet, id) => {
-    // const balance = wallet.
     if (!tokens) return;
     const nextTokens = tokens[id];
     if (!nextTokens) return;
@@ -135,7 +171,7 @@ export const usePositions = (): PositionType[] | null => {
       id,
       address: wallet,
       tracking: tracking[0],
-      balance: 123,
+      balance: 27.45,
       pnl: 0,
       tokens: nextTokens[0].map((token: string) => {
         const tokenBalanceType: TokenBalanceType = {
