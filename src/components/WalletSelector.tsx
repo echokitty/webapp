@@ -61,11 +61,9 @@ const WalletSelector = (): JSX.Element => {
   const dispatch = useDispatch();
   const { account, activateBrowserWallet, activate } = useEthers();
 
-  const connectingWallet = useSelector(selectConnectingWallet);
-
   return (
     <Popup
-      show={connectingWallet && !account}
+      show={!account}
       close={() => dispatch(walletConnected())}
       header="Connect to a wallet"
     >
