@@ -7,13 +7,10 @@ const StyledNotFoundPage = styled.div`
   flex: 1;
   font-size: 2.3rem;
   padding: 3rem;
-  border: solid 1px red;
 `;
 
 const NotFoundPage = () => {
-  return (
-    <StyledNotFoundPage>pages/not-found/NotFoundPage.tsx</StyledNotFoundPage>
-  );
+  return <StyledNotFoundPage>404</StyledNotFoundPage>;
 };
 
 export default NotFoundPage;
