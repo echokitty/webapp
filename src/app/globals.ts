@@ -1,6 +1,6 @@
 import { utils } from "ethers";
 
-export const LIVE = true;
+export const LIVE = false;
 
 export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const NATIVE_TOKEN_ADDRESS =
